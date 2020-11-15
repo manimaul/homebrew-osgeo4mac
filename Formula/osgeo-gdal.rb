@@ -152,6 +152,8 @@ class OsgeoGdal < Formula
   end
 
   def configure_args
+    java = ENV["JAVA_HOME"]
+    java = "yes" if java.nil? || java.empty?
     args = [
       "--prefix=#{prefix}",
       "--disable-debug",
@@ -165,7 +167,7 @@ class OsgeoGdal < Formula
       "--with-opencl",
       "--with-pcre",
       "--with-threads=yes",
-      "--with-java=yes",
+      "--with-java=#{java}",
       "--with-liblzma=yes",
       "--with-pcidsk=internal",
       "--with-pcraster=internal",
